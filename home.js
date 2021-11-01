@@ -31,3 +31,24 @@ window.onload = function() {
     document.getElementById("myCanvas").style.width = "500px";
     document.getElementById("myCanvas").style.height = "500px";
   }
+  
+  function es_bisiesto(anho){
+    if (((anho % 4 == 0) && (anho % 100 != 0 )) || (anho % 400 == 0)){
+      return true;
+    }
+    return false;
+  }
+  let fecha1 = new Date('1997/10/17');
+  let fecha2 = new Date()
+  let dias_anho = 365;
+
+  if(es_bisiesto(fecha2.getFullYear)){
+    dias_anho = 366;
+  }
+
+  let resta = fecha2.getTime() - fecha1.getTime()
+  let edad_anhos = Math.round(resta/ (1000*60*60*24*dias_anho))
+  let edad_dias = Math.round(resta/ (1000*60*60*24))
+
+  document.getElementById("edad").innerHTML = edad_anhos;
+  document.getElementById("dias_vida").innerHTML = edad_dias;
